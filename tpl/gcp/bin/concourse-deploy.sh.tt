@@ -6,6 +6,7 @@ set -xe
 bosh -e <%= @values['bosh']['name'] %> upload-stemcell https://bosh.io/d/stemcells/bosh-google-kvm-ubuntu-trusty-go_agent
 bosh -e <%= @values['bosh']['name'] %> upload-release https://github.com/concourse/concourse/releases/download/v3.8.0/concourse-3.8.0.tgz
 bosh -e <%= @values['bosh']['name'] %> upload-release https://github.com/concourse/concourse/releases/download/v3.8.0/garden-runc-1.9.0.tgz
+bosh -e <%= @values['bosh']['name'] %> upload-release https://bosh.io/d/github.com/cloudfoundry/postgres-release
 
 # Deploy Concourse
 bosh -e <%= @values['bosh']['name'] %> -d concourse \
