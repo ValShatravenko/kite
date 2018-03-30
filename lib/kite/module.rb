@@ -48,13 +48,13 @@ module Kite
 
           if overwrite.downcase == 'y'
             remove_dir @path
-            Git.clone(@uri, @path)
+            system "git submodule update --checkout --force #{@uri} #{@path}"
             say "Successfully cloned the fresh #{@name}!", :green
           else
             say "Keeping the current module version"
           end
         else
-          Git.clone(@uri, @path)
+          system "git submodule add --force #{@uri} #{@path}"
         end
       end
 
